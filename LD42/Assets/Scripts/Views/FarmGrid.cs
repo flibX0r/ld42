@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
+using Models;
 using UnityEngine;
 using Views;
 
@@ -24,6 +25,9 @@ public class FarmGrid : MonoBehaviour
     [UsedImplicitly]
     private void Start()
     {
+        if (GridSize.x <= 0 || GridSize.y <=0)
+            return;
+
         _xFences = new FenceView[GridSize.x+1,GridSize.y];
         _zFences = new FenceView[GridSize.x,GridSize.y+1];
 
