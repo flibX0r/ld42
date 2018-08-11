@@ -1,0 +1,8 @@
+*.csproj
+.vs/
+*.sln
+*.DotSettings*
+Temp/
+Library/
+Build/
+obj/
