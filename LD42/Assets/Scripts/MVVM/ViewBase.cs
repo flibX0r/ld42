@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
-
+﻿using UnityEngine;
 using UniRx;
 
 namespace MVVM
@@ -32,6 +26,11 @@ namespace MVVM
                 if (_viewModel != null)
                     InitializeBindings();
             }
+        }
+
+        protected virtual void Start()
+        {
+            ViewModel = gameObject.GetDataContext()?.Value as T;
         }
 
         protected virtual void InitializeBindings()

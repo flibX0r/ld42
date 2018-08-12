@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33302110991584032}
   - component: {fileID: 23260348652040160}
   m_Layer: 0
-  m_Name: GroundTile2
+  m_Name: GroundTileGhost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56,8 +56,8 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: da961bfe4382f8d4f99d3a75fd4c4261, type: 2}
-  - {fileID: 2100000, guid: 6b5a17a3e7f6e284cbea5cfeb806ae6f, type: 2}
+  - {fileID: 2100000, guid: 6816650333a2cb24ab691ff5119db90b, type: 2}
+  - {fileID: 2100000, guid: 6816650333a2cb24ab691ff5119db90b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
