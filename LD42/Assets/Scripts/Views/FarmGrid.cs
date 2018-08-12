@@ -39,6 +39,7 @@ public class FarmGrid : MonoBehaviour
             }
         }
 
+        /*
         for (var z = 0; z <= GridSize.y; ++z)
         {
             for (var x = 0; x <= GridSize.x; ++x)
@@ -71,7 +72,7 @@ public class FarmGrid : MonoBehaviour
                     };
                 }
             }
-        }
+        }*/
 
         // TEMP
         _fencePosts = new bool[GridSize.x + 1, GridSize.y + 1];

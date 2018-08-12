@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using UniRx;
+﻿using System.ComponentModel;
+using UnityEngine;
 using Models;
 using MVVM;
 
@@ -16,21 +16,33 @@ namespace Views
         {
             base.InitializeBindings();
 
-            ViewModel.ObserveProperty(vm => vm.IsBuilt).Subscribe(IsBuildChanged).AddTo(Disposer);
+            ViewModel.PropertyChanged += ViewModelChanged;
 
             Mesh.materials = ViewModel.IsOdd ? Variant1 : Variant2;
             transform.position = ViewModel.Position;
 
-            IsBuildChanged(ViewModel.IsBuilt);
+            IsBuildChanged();
         }
 
-        protected void IsBuildChanged(bool state)
+        private void ViewModelChanged(object sender, PropertyChangedEventArgs args)
+        {
+            switch (args.PropertyName)
+            {
+                case nameof(Tile.IsBuilt):
+                    IsBuildChanged();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        protected void IsBuildChanged()
         {
             if (ViewModel == null)
                 return;
 
-            Mesh.enabled = state;
-            Collider.enabled = !state;
+            Mesh.enabled = ViewModel.IsBuilt;
+            Collider.enabled = !ViewModel.IsBuilt;
         }
     }
 }
