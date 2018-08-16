@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>%UNITY_WEB_NAME%</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrapper" style="width: %UNITY_WIDTH%px; height: %UNITY_HEIGHT%px;">
+    <div id="gameContainer"></div>
+    <div id="loaderWrapper">
+      <div class="sheep sheepBody">
+        <div class="sheep sheepTorso">
+          <div class="sheep torsoFront"></div>
+          <div class="sheep torsoSide"></div>
+          <div class="sheep torsoTop"></div>
+
+          <div class="sheep sheepWool" id="loader">
+            <div class="sheep woolFront"></div>
+            <div class="sheep woolSide"></div>
+            <div class="sheep woolTop"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="%UNITY_WEBGL_LOADER_URL%"></script>
+  <script>
+    function LoaderProgress(inst, prog) {
+      if (!inst.Module)
+        return;
+      if (!inst.progress) {
+        inst.progress = document.getElementById("loaderWrapper");
+        inst.progress.loader = document.getElementById("loader");
+        inst.progress.style.display = "block";
+      }
+      var scale = [1+0.75*prog,1+0.5*prog,1+0.25*prog];
+
+      inst.progress.loader.style.transform = "translateZ(1.6em) scale3d(" + scale.join(",") + ")";
+
+      if (prog >= 1) {
+        inst.progress.style.display = "none";
+      }
+    }
+
+    var gameInstance = UnityLoader.instantiate("gameContainer", "%UNITY_WEBGL_BUILD_URL%", {onProgress: LoaderProgress});
+  </script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+
+html {
+  height: 100%;
+}
+body {
+  min-height: 100%;
+  margin: 0;
+}
+
+.wrapper {
+  position: absolute;
+  margin: auto;
+}
+
+#gameContainer {
+  width: 100%;
+  height: 100%;
+}
+
+#loaderWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 8vmin;
+  perspective: 4em;
+  background: #000;
+  z-index: 100;
+}
+
+.sheep {
+  position: absolute;
+}
+
+.sheepBody {
+  top: 50%;
+  left: 50%;
+  transform-style: preserve-3d;
+  transform: translateZ(-2em) rotateX(-30deg) rotateY(-45deg);
+}
+
+.sheepTorso {
+  transform-origin: bottom;
+  transform-style: preserve-3d;
+  animation: idle 1s ease-in-out infinite;
+}
+
+@keyframes idle {
+  0%   { transform: translateY(-1em) rotateZ( 3deg); }
+  50%  { transform: translateY(-1em) rotateZ(-3deg); }
+  100% { transform: translateY(-1em) rotateZ( 3deg); }
+}
+
+.torsoFront {
+  width: 2em; margin-left: -1em;
+  height: 2em; margin-top: -1em;
+  transform: translateZ(2em);
+  background: #F6A5C1;
+  border: 0.5px solid #F6A5C1;
+}
+
+.torsoSide {
+  width: 4em; margin-left: -2em;
+  height: 2em; margin-top: -1em;
+  transform: translateX(1em) rotateY(90deg);
+  background: #F48FB1;
+  border: 0.5px solid #F48FB1;
+}
+
+.torsoTop {
+  width: 2em; margin-left: -1em;
+  height: 4em; margin-top: -2em;
+  transform: translateY(-1em) rotateX(90deg);
+  background: #F8BBD0;
+  border: 0.5px solid #F8BBD0;
+}
+
+#loader {
+  transition: transform 2s ease-in-out;
+  transform: translateZ(1.6em);
+}
+
+.sheepWool {
+  transform-style: preserve-3d;
+  transform-origin: 50% 0.5em 0;
+/*  animation: woolGrow 4s linear infinite;*/
+}
+@keyframes woolGrow {
+  0%   {transform: translateZ(1.6em) scale3d(1,1,1); }
+  100% {transform: translateZ(1.6em) scale3d(1.75,1.5,1.25); }
+}
+
+.woolFront {
+  width: 2em; margin-left: -1em;
+  height: 2em; margin-top: -1em;
+  background: #eee;
+  border: 0.5px solid #eee;
+}
+.woolSide {
+  width: 3.6em; margin-left: -1.8em;
+  height: 2em; margin-top: -1em;
+  transform: translateZ(-1.8em) translateX(1em) rotateY(90deg);
+  background: #ddd;
+  border: 0.5px solid #ddd;
+}
+.woolTop {
+  width: 2em; margin-left: -1em;
+  height: 3.6em; margin-top: -1.8em;
+  transform: translateZ(-1.8em) translateY(-1em) rotateX(90deg);
+  background: #fff;
+  border: 0.5px solid #fff;
+}
